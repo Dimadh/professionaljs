@@ -13,11 +13,16 @@ function start() {
 	outerI = 0;
 	drawArray(arr,arrBox);
 }
+
 function setArray(){
  	var form = document.forms[0].elements;
  	var arr = new Array();
  	for (var i = 0; i < form.length-1; i++) {
  		arr[i] = parseFloat(form[i].value);
+ 	}
+ 	for (var i = 0; i < form.length-1; i++) {
+ 		if(isNaN(arr[i]))
+ 			arr[i]=0;
  	}
 
  	return arr;
@@ -48,17 +53,14 @@ function addElem(index,val,parent) {
 	parent.appendChild(elem);
 }
 
-
-
 function nextClicked(){
 	var elem1,elem2;
 
-	if(outerI<arr.length){
+	if(outerI<arr.length-1){
 		if(innerI<arr.length-outerI){
 			undyeElems();
 			elem1 = document.getElementById('elem'+innerI);
-			elem2 = document.getElementById('elem'+(1+innerI));
-			
+			elem2 = document.getElementById('elem'+(1+innerI));			
 			dyeElem(elem1,elem2,'#FFFF3C');
 
 			if (arr[innerI]>arr[innerI+1]){
@@ -76,6 +78,8 @@ function nextClicked(){
 				undyeElems();
 			}
 		}
+	}else{
+		alert('Array is sorted!');
 	}
 }
 function undyeElems(){
@@ -94,4 +98,11 @@ function changeElem(elem1,elem2,val1,val2){
 	elem2.innerHTML = val2; 
 }
 function clearBox(){
+	var arrBox = document.getElementById('arr-box');
+	eraseArrBox(arr,arrBox);
+	var form = document.forms[0].elements;
+	for (var i = 0; i < form.length-1; i++) {
+		form[i].value = '';
+	}
+	arrBox.style.visibility = 'hidden';
 }
