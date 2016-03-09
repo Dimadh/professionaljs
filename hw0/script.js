@@ -3,10 +3,9 @@ var arr = new Array;
 var innerI = 0,//for pseudoloop
 	outerI = 0;
 
-function start() {
+function start(){
 	arr = setArray();
 	var arrBox = document.getElementById('arr-box');
-	
 	if(arrBox.style.visibility == 'visible')
 		eraseArrBox(arr,arrBox);
 	innerI = 0;
@@ -106,3 +105,5 @@ function clearBox(){
 	}
 	arrBox.style.visibility = 'hidden';
 }
+
+
