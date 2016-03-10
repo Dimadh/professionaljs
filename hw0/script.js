@@ -1,6 +1,6 @@
 var arr = new Array;
 var yellow = '#FFFF3C',
-	red = '#FF533C',
+	   red = '#FF533C',
 	white = '#F9F9F9';
 var innerI = 0,//for pseudoloop
 	outerI = 0;
